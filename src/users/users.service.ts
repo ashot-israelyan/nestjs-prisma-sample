@@ -68,7 +68,7 @@ export class UsersService {
 		const findUser = await this.getUserById(userId);
 
 		if (!findUser) throw new HttpException('User Not Found', 404);
-		if (!findUser.userSetting) throw new HttpException('Bad Request', 400);
+		if (!findUser.userSetting) throw new HttpException('No Settings', 400);
 
 		return this.prisma.userSetting.update({ where: { userId }, data });
 	}
