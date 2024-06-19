@@ -36,6 +36,7 @@ export class UsersService {
 						notificationsOn: true,
 					},
 				},
+				posts: true,
 			},
 		});
 	}
