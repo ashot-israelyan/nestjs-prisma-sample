@@ -14,4 +14,15 @@ export class PostsService {
 			},
 		});
 	}
+
+	createGroupPost(userIds: number[], data: Prisma.GroupPostCreateWithoutUsersInput) {
+		return this.prisma.groupPost.create({
+			data: {
+				...data,
+				users: {
+					create: userIds.map((userId) => ({ userId })),
+				},
+			},
+		});
+	}
 }

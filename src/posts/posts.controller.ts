@@ -1,6 +1,7 @@
 import { Body, Controller, Post } from '@nestjs/common';
 import { PostsService } from './posts.service';
 import { CreatePostDto } from './dtos/CreatePost.dto';
+import { CreateGroupPostDto } from './dtos/CreateGroupPost.dto';
 
 @Controller('posts')
 export class PostsController {
@@ -9,5 +10,10 @@ export class PostsController {
 	@Post()
 	createPost(@Body() { userId, ...createPostDto }: CreatePostDto) {
 		return this.postsService.createPost(userId, createPostDto);
+	}
+
+	@Post('group')
+	createGroupPost(@Body() { userIds, ...createGroupPostDto }: CreateGroupPostDto) {
+		return this.postsService.createGroupPost(userIds, createGroupPostDto);
 	}
 }
